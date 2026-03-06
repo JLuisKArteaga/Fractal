@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visor de Fractales Koch JSON</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>?? Visor de Copo de Nieve Koch</h1>
+            <p class="subtitle">Visualizador de fractales generados en C++ con CTurtle</p>
+        </header>
+
+        <div class="controls">
+            <div class="upload-section">
+                <label for="fileInput" class="upload-btn">
+                    ?? Cargar archivo JSON
+                </label>
+                <input type="file" id="fileInput" accept=".json" hidden>
+                <span id="fileName" class="file-name">Ningún archivo seleccionado</span>
+            </div>
+
+            <div class="view-controls">
+                <button id="resetBtn" class="btn secondary">? Resetear Vista</button>
+                <button id="animateBtn" class="btn primary">? Animar Construcción</button>
+                <label class="checkbox">
+                    <input type="checkbox" id="showGrid" checked>
+                    Mostrar cuadrícula
+                </label>
+            </div>
+
+            <div class="zoom-controls">
+                <button id="zoomOut" class="btn zoom">-</button>
+                <span id="zoomLevel">100%</span>
+                <button id="zoomIn" class="btn zoom">+</button>
+                <button id="fitBtn" class="btn secondary">Ajustar a pantalla</button>
+            </div>
+        </div>
+
+        <div class="info-panel" id="infoPanel" style="display: none;">
+            <h3>?? Información del Fractal</h3>
+            <div class="stats-grid">
+                <div class="stat">
+                    <span class="stat-label">Tipo:</span>
+                    <span id="metaTipo" class="stat-value">-</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Nivel de recursión:</span>
+                    <span id="metaNivel" class="stat-value">-</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Total segmentos:</span>
+                    <span id="metaSegmentos" class="stat-value">-</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Fecha generación:</span>
+                    <span id="metaFecha" class="stat-value">-</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Tamaño lado:</span>
+                    <span id="metaTamano" class="stat-value">-</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="canvas-container">
+            <canvas id="canvas"></canvas>
+            <div id="loading" class="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>Cargando fractal...</p>
+            </div>
+            <div id="placeholder" class="placeholder">
+                <div class="placeholder-icon">??</div>
+                <p>Arrastra un archivo JSON o haz clic en "Cargar archivo"</p>
+                <p class="hint">Formato: fractal_koch.json generado desde C++</p>
+            </div>
+        </div>
+
+        <div class="color-legend" id="colorLegend" style="display: none;">
+            <h4>Leyenda de colores por nivel:</h4>
+            <div class="legend-items" id="legendItems"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Generado para curso de Programación Estructurada C++ | Ingeniería de Software</p>
+    </footer>
+
+    <script src="js/viewer.js"></script>
+</body>
+</html>
